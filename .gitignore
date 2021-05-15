@@ -3,4 +3,5 @@
 /base.exe
 /base
 *.ppm
-
+*.o
+*.obj

@@ -1,0 +1,13 @@
+
+
+all: ss.exe base.exe
+
+ss.exe:
+	cl ss.c
+
+base.exe:
+	cl base.c
+
+clean: 
+	erase ss.exe base.exe
+
