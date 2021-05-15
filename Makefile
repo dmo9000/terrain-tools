@@ -1,7 +1,7 @@
 CFLAGS=-g -ggdb
 
-all: ss
-
+all: ss base
 
 clean: 
-	rm -f ss ss.exe
+	rm -f ss ss.exe base base.exe
+
