@@ -14,7 +14,8 @@ checker.exe:
 slope.exe:
 	cl slope.c
 
-
+perlin.exe:
+    cl perlin.c
 
 clean: 
 	erase *.exe
