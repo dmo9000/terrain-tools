@@ -3,8 +3,8 @@
 #include <inttypes.h>
 
 
-#define WIDTH   128             /* default width */
-#define HEIGHT  128             /* default height */
+#define WIDTH   2048             /* default width */
+#define HEIGHT  2048             /* default height */
 #define OFFSET  0               /* height above sea level */
 #define MAXCOL  65535           /* maximum colour value */
 #define BUMP    128
