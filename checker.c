@@ -6,6 +6,7 @@
 #define HEIGHT	128		/* default height */
 #define OFFSET	0		/* height above sea level */
 #define MAXCOL	65535		/* maximum colour value */
+#define BUMP	8
 
 int main(int argc, char *argv[])
 {
@@ -25,15 +26,15 @@ int main(int argc, char *argv[])
 
             if ((j % 16) < 8) {
                 if ((i % 16) < 8) {
-                    z = (MAXCOL/2) + (OFFSET - 1024);
+                    z = (MAXCOL/2) + (OFFSET - BUMP);
                 } else {
-                    z = (MAXCOL/2) + (OFFSET + 1024);
+                    z = (MAXCOL/2) + (OFFSET + BUMP);
                 }
             } else {
                 if ((i % 16) < 8) {
-                    z = (MAXCOL/2) + (OFFSET + 1024);
+                    z = (MAXCOL/2) + (OFFSET + BUMP);
                 } else {
-                    z = (MAXCOL/2) + (OFFSET - 1024);
+                    z = (MAXCOL/2) + (OFFSET - BUMP);
                 }
             }
 
