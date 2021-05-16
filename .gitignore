@@ -2,7 +2,8 @@ base
 ss
 checker
 slope
-*.ppm
+*.pgm
+*.png
 *.o
 *.obj
 *.orig

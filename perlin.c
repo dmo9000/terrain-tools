@@ -3,8 +3,8 @@
 #include <inttypes.h>
 
 
-#define WIDTH   2048             /* default width */
-#define HEIGHT  2048             /* default height */
+#define WIDTH   2160            /* default width */
+#define HEIGHT  2160             /* default height */
 #define OFFSET  0               /* height above sea level */
 #define MAXCOL  65535           /* maximum colour value */
 #define BUMP    128
@@ -85,22 +85,47 @@ main(int argc, char *argv[])
     int x, y;
     float z = 0.0;
     float s = 0.025;
+    float freq = 0.0;
+    int depth = 0;
+    
+    FILE *output = NULL;
 
-    fprintf(stdout, "P2\n");
-    fprintf(stdout, "%u %u\n", WIDTH, HEIGHT);
-    fprintf(stdout, "%u\n", MAXCOL);
 
+    //fprintf(stderr, "zscale = %f\n", atof(argv[1]));
+
+    SEED = atoi(argv[1]);
+    s = atof(argv[2]);
+    freq = atof(argv[3]);
+    depth = atoi(argv[4]);
+
+    fprintf(stderr, "SEED = %d\n", SEED);
+    fprintf(stderr, "zscale = %f\n", s);
+    fprintf(stderr, "freq = %f\n", freq);
+    fprintf(stderr, "depth = %d\n", depth);
+
+    fprintf(stderr, "Writing map to '%s'\n", argv[5]);
+    output = fopen(argv[5], "wb");
+
+    fprintf(output, "P2\n");
+    fprintf(output, "%u %u\n", WIDTH, HEIGHT);
+    fprintf(output, "%u\n", MAXCOL);
+
+ 
 
     for(y=0; y<HEIGHT; y++) {
         for(x=0; x<WIDTH; x++) {
             //z = perlin2d(x, y, 0.1, 4);
-            z = perlin2d(x, y, 0.05, 2);
+            //z = perlin2d(x, y, 0.05, 2);
+            //z = perlin2d(x, y, 0.001, 4);
+            z = perlin2d(x, y, freq, depth);
 	    z -= 0.5;
 	    z = z * s;
             //fprintf(stderr, "%f\n", z);
-            fprintf(stdout, "%u\n", (uint16_t) (z * (float) MAXCOL + (MAXCOL / 2)));
+            fprintf(output, "%u\n", (uint16_t) (z * (float) MAXCOL + (MAXCOL / 2)));
         }
     }
+
+    fclose(output);
 
     return 0;
 }
