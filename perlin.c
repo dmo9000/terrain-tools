@@ -1,4 +1,15 @@
+#include <stdlib.h>
 #include <stdio.h>
+#include <inttypes.h>
+
+
+#define WIDTH   128             /* default width */
+#define HEIGHT  128             /* default height */
+#define OFFSET  0               /* height above sea level */
+#define MAXCOL  65535           /* maximum colour value */
+#define BUMP    128
+
+
 
 static int SEED = 0;
 
@@ -13,7 +24,8 @@ static int hash[] = {208,34,231,213,32,248,233,56,161,78,24,140,71,48,140,254,24
                      193,100,192,143,97,53,145,135,19,103,13,90,135,151,199,91,239,247,33,39,145,
                      101,120,99,3,186,86,99,41,237,203,111,79,220,135,158,42,30,154,120,67,87,167,
                      135,176,183,191,253,115,184,21,233,58,129,233,142,39,128,211,118,137,139,255,
-                     114,20,218,113,154,27,127,246,250,1,8,198,250,209,92,222,173,21,88,102,219};
+                     114,20,218,113,154,27,127,246,250,1,8,198,250,209,92,222,173,21,88,102,219
+                    };
 
 int noise2(int x, int y)
 {
@@ -71,9 +83,20 @@ int
 main(int argc, char *argv[])
 {
     int x, y;
-    for(y=0; y<4000; y++)
-        for(x=0; x<4000; x++)
-            perlin2d(x, y, 0.1, 4);
+    float z = 0.0;
+
+    fprintf(stdout, "P2\n");
+    fprintf(stdout, "%u %u\n", WIDTH, HEIGHT);
+    fprintf(stdout, "%u\n", MAXCOL);
+
+
+    for(y=0; y<HEIGHT; y++) {
+        for(x=0; x<WIDTH; x++) {
+            z = perlin2d(x, y, 0.1, 4);
+            //fprintf(stderr, "%f\n", z);
+            fprintf(stdout, "%u\n", (uint16_t) (z * (float) MAXCOL));
+        }
+    }
 
     return 0;
 }
