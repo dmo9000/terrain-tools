@@ -1,3 +1,7 @@
+base
+ss
+checker
+slope
 *.ppm
 *.o
 *.obj
