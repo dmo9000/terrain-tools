@@ -8,6 +8,14 @@ ss.exe:
 base.exe:
 	cl base.c
 
+checker.exe:
+	cl checker.c
+
+slope.exe:
+	cl slope.c
+
+
+
 clean: 
-	erase ss.exe base.exe
+	erase *.exe
 

@@ -1,9 +1,5 @@
-/ss.exe
-/ss
-/base.exe
-/base
 *.ppm
 *.o
 *.obj
 *.orig
-
+/*.exe

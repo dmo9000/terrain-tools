@@ -6,7 +6,7 @@
 #define HEIGHT	128		/* default height */
 #define OFFSET	0		/* height above sea level */
 #define MAXCOL	65535		/* maximum colour value */
-#define BUMP	8
+#define BUMP	32
 
 int main(int argc, char *argv[])
 {
