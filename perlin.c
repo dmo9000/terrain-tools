@@ -84,7 +84,7 @@ main(int argc, char *argv[])
 {
     int x, y;
     float z = 0.0;
-    float s = 0.1;
+    float s = 0.025;
 
     fprintf(stdout, "P2\n");
     fprintf(stdout, "%u %u\n", WIDTH, HEIGHT);
