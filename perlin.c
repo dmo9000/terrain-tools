@@ -84,6 +84,7 @@ main(int argc, char *argv[])
 {
     int x, y;
     float z = 0.0;
+    float s = 0.1;
 
     fprintf(stdout, "P2\n");
     fprintf(stdout, "%u %u\n", WIDTH, HEIGHT);
@@ -93,8 +94,10 @@ main(int argc, char *argv[])
     for(y=0; y<HEIGHT; y++) {
         for(x=0; x<WIDTH; x++) {
             z = perlin2d(x, y, 0.1, 4);
+	    z -= 0.5;
+	    z = z * s;
             //fprintf(stderr, "%f\n", z);
-            fprintf(stdout, "%u\n", (uint16_t) (z * (float) MAXCOL));
+            fprintf(stdout, "%u\n", (uint16_t) (z * (float) MAXCOL + (MAXCOL / 2)));
         }
     }
 
