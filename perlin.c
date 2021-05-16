@@ -93,7 +93,8 @@ main(int argc, char *argv[])
 
     for(y=0; y<HEIGHT; y++) {
         for(x=0; x<WIDTH; x++) {
-            z = perlin2d(x, y, 0.1, 4);
+            //z = perlin2d(x, y, 0.1, 4);
+            z = perlin2d(x, y, 0.05, 2);
 	    z -= 0.5;
 	    z = z * s;
             //fprintf(stderr, "%f\n", z);
